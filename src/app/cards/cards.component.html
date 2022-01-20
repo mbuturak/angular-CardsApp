@@ -1,0 +1,28 @@
+<main>
+  <div class="row">
+    <div class="col-md-9"></div>
+    <div class="col-md-3">
+      <app-card-search></app-card-search>
+      &nbsp;
+      <button mat-raised-button color="primary" (click)="openDialog()">
+        Yeni Ekle
+      </button>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-12" *ngIf="!services.cards">
+      <span class="text-center">Kartvizitler yükleniyor ...</span>
+    </div>
+    <div
+      class="alert alert-primary"
+      role="alert"
+      *ngIf="services.cards?.length === 0"
+    >
+      Henüz kartvizit bulunmamaktadır.
+    </div>
+    <div class="col-md-3" *ngFor="let cardItem of services.fiteredCards">
+      <app-card-item [cardInput]="cardItem"></app-card-item>
+    </div>
+  </div>
+</main>

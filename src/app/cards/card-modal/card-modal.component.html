@@ -1,0 +1,68 @@
+<h2 mat-dialog-title>{{ data ? "Kartviziti Düzenle" : "Yeni Kartvizit" }}</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-progress-bar mode="query" *ngIf="showSpinner"></mat-progress-bar>
+  <br />
+  <form class="form" [formGroup]="cardForm">
+    <mat-form-field appearance="legacy" class="full-width">
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        placeholder="Please type a name."
+        formControlName="name"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="legacy" class="full-width">
+      <mat-label>Title</mat-label>
+      <input
+        matInput
+        placeholder="Please type a title."
+        formControlName="title"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="legacy" class="full-width">
+      <mat-label>Phone Number</mat-label>
+      <input
+        matInput
+        placeholder="Please type a phone."
+        formControlName="phone"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="legacy" class="full-width">
+      <mat-label>E-mail</mat-label>
+      <input
+        matInput
+        placeholder="Please type an email."
+        formControlName="email"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="legacy" class="full-width">
+      <mat-label>Adress</mat-label>
+      <input
+        matInput
+        placeholder="Please type an adress."
+        formControlName="adress"
+      />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <div class="flex-grow-1 text-start" *ngIf="data">
+    <button
+      mat-raised-button
+      color="warn"
+      mat-dialog-close
+      (click)="deleteCart()"
+    >
+      Delete
+    </button>
+  </div>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="data ? updateCart() : addCart()"
+    [disabled]="cardForm.invalid || showSpinner"
+  >
+    {{ data ? "Update" : "Add" }}
+  </button>
+</mat-dialog-actions>

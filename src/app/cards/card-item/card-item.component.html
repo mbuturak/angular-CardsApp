@@ -1,0 +1,17 @@
+<mat-card class="cart-item" (click)="openUpdateCartModal(cardInput)">
+  <mat-card-header>
+    <mat-card-title>{{ cardInput.name }}</mat-card-title>
+    <mat-card-subtitle>{{ cardInput.title }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{ cardInput.phone }}</li>
+      <li class="list-group-item" *ngIf="cardInput.email">
+        {{ cardInput.email }}
+      </li>
+      <li class="list-group-item" *ngIf="cardInput.adress">
+        {{ cardInput.adress }}
+      </li>
+    </ul>
+  </mat-card-content>
+</mat-card>
